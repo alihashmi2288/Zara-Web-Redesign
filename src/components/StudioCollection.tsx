@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import Reveal from './Reveal';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,19 +12,22 @@ const studioItems = [
     title: 'THE SILK EDIT',
     color: '#f5f5f5', // Light gray
     image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=2576&auto=format&fit=crop',
-    desc: 'Fluid silhouettes in premium mulberry silk.'
+    desc: 'Fluid silhouettes in premium mulberry silk.',
+    target: '/collections/women',
   },
   {
     title: 'ARCHITECTURAL WOOL',
     color: '#e2e2e2', // Slightly darker gray
     image: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?q=80&w=2574&auto=format&fit=crop',
-    desc: 'Structured tailoring with a modern edge.'
+    desc: 'Structured tailoring with a modern edge.',
+    target: '/product/1',
   },
   {
     title: 'MINIMALIST LEATHER',
     color: '#d4d4d4', // Darker gray
     image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=2680&auto=format&fit=crop',
-    desc: 'Buttery soft leather in timeless shapes.'
+    desc: 'Buttery soft leather in timeless shapes.',
+    target: '/product/13',
   }
 ];
 
@@ -62,14 +66,14 @@ export default function StudioCollection() {
             >
               <div className={i % 2 !== 0 ? 'md:order-2' : ''}>
                 <Reveal>
-                  <div className="aspect-[3/4] overflow-hidden cursor-view">
+                  <Link to={item.target} aria-label={`Explore ${item.title}`} className="block aspect-[3/4] overflow-hidden cursor-view">
                     <img 
                       src={item.image} 
                       alt={item.title} 
                       className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
                       referrerPolicy="no-referrer"
                     />
-                  </div>
+                  </Link>
                 </Reveal>
               </div>
               <div className={`space-y-8 ${i % 2 !== 0 ? 'md:order-1 md:text-right' : ''}`}>
@@ -84,9 +88,9 @@ export default function StudioCollection() {
                   </p>
                 </Reveal>
                 <Reveal delay={0.4}>
-                  <button className="text-xs font-bold tracking-widest uppercase border-b border-black pb-1 hover:opacity-60 transition-opacity">
+                  <Link to={item.target} className="inline-block text-xs font-bold tracking-widest uppercase border-b border-black pb-1 hover:opacity-60 transition-opacity">
                     Shop Collection
-                  </button>
+                  </Link>
                 </Reveal>
               </div>
             </div>

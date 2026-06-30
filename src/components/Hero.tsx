@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import SplitType from 'split-type';
 import MagneticButton from './MagneticButton';
+import { Link } from 'react-router-dom';
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -71,12 +72,14 @@ export default function Hero() {
         </h1>
         <div className="flex flex-col items-center gap-4">
           <MagneticButton strength={0.2}>
-            <button 
-              ref={buttonRef}
-              className="px-12 py-4 bg-white text-black text-xs font-bold tracking-widest uppercase hover:bg-black hover:text-white transition-all duration-500"
-            >
-              View Collection
-            </button>
+            <Link to="/shop" aria-label="View Collection">
+              <button 
+                ref={buttonRef}
+                className="px-12 py-4 bg-white text-black text-xs font-bold tracking-widest uppercase hover:bg-black hover:text-white transition-all duration-500"
+              >
+                View Collection
+              </button>
+            </Link>
           </MagneticButton>
           <div className="mt-12 animate-bounce opacity-50 flex flex-col items-center gap-2">
             <span className="text-[8px] tracking-[0.5em] font-bold uppercase">Scroll</span>

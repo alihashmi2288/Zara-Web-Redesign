@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -9,22 +10,26 @@ const editorialImages = [
   {
     url: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=2574&auto=format&fit=crop',
     title: 'THE NEW MINIMALISM',
-    desc: 'Clean lines and premium fabrics.'
+    desc: 'Clean lines and premium fabrics.',
+    target: '/product/1',
   },
   {
     url: 'https://images.unsplash.com/photo-1488161628813-244768e7f074?q=80&w=2564&auto=format&fit=crop',
     title: 'URBAN NOMAD',
-    desc: 'Versatile pieces for the city.'
+    desc: 'Versatile pieces for the city.',
+    target: '/collections/men',
   },
   {
     url: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2670&auto=format&fit=crop',
     title: 'TIMELESS ELEGANCE',
-    desc: 'Silhouettes that define the season.'
+    desc: 'Silhouettes that define the season.',
+    target: '/product/2',
   },
   {
     url: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=2670&auto=format&fit=crop',
     title: 'MODERN CLASSIC',
-    desc: 'Essential pieces for every wardrobe.'
+    desc: 'Essential pieces for every wardrobe.',
+    target: '/product/9',
   }
 ];
 
@@ -60,7 +65,12 @@ export default function HorizontalEditorial() {
 
       <div ref={containerRef} className="flex h-full items-center px-[10vw] gap-[5vw]">
         {editorialImages.map((item, i) => (
-          <div key={i} className="flex-shrink-0 w-[60vw] md:w-[40vw] aspect-[3/4] relative group cursor-view">
+          <Link 
+            key={i} 
+            to={item.target}
+            aria-label={`Explore ${item.title}`}
+            className="flex-shrink-0 w-[60vw] md:w-[40vw] aspect-[3/4] relative group cursor-view block"
+          >
             <img 
               src={item.url} 
               alt={item.title} 
@@ -71,7 +81,7 @@ export default function HorizontalEditorial() {
               <h3 className="text-2xl font-serif font-bold tracking-tight">{item.title}</h3>
               <p className="text-xs tracking-widest uppercase mt-2">{item.desc}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

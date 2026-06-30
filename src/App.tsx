@@ -13,7 +13,14 @@ import Reveal from './components/Reveal';
 import VirtualStylist from './components/VirtualStylist';
 import CurtainTransition from './components/CurtainTransition';
 import ProductDetail from './components/ProductDetail';
-import CategoryPage from './components/CategoryPage';
+import CollectionPage from './components/CollectionPage';
+import ShopPage from './components/ShopPage';
+import SalePage from './components/SalePage';
+import NewArrivalsPage from './components/NewArrivalsPage';
+import BestSellersPage from './components/BestSellersPage';
+import LookbookPage from './components/LookbookPage';
+import AboutPage from './components/AboutPage';
+import ContactPage from './components/ContactPage';
 import CartDrawer from './components/CartDrawer';
 import SearchOverlay from './components/SearchOverlay';
 import { AnimatePresence } from 'motion/react';
@@ -154,7 +161,15 @@ function AppContent() {
       
       <Routes>
         <Route path="/" element={<Home onCategoryClick={handleCategoryClick} />} />
-        <Route path="/category/:categoryId" element={<CategoryPage />} />
+        <Route path="/shop" element={<ShopPage />} />
+        <Route path="/collections/:categoryId" element={<CollectionPage />} />
+        <Route path="/category/:categoryId" element={<CollectionPage />} />
+        <Route path="/sale" element={<SalePage />} />
+        <Route path="/new-arrivals" element={<NewArrivalsPage />} />
+        <Route path="/best-sellers" element={<BestSellersPage />} />
+        <Route path="/lookbook" element={<LookbookPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="/product/:id" element={<ProductDetail />} />
       </Routes>
 

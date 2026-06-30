@@ -23,7 +23,9 @@ export default function Navbar({ onCategoryClick, onCartClick, onSearchClick }: 
   const handleLinkClick = (category: string) => {
     setIsMenuOpen(false);
     onCategoryClick?.();
-    navigate(`/category/${category.toLowerCase()}`);
+    const cat = category.toLowerCase();
+    const target = cat === 'woman' ? 'women' : cat === 'man' ? 'men' : cat;
+    navigate(`/collections/${target}`);
   };
 
   useEffect(() => {
@@ -146,13 +148,13 @@ export default function Navbar({ onCategoryClick, onCartClick, onSearchClick }: 
             </div>
 
             <div className="mt-auto flex flex-col gap-4 text-xs tracking-widest font-medium text-gray-500 uppercase">
-              <a href="#" className="hover:text-black">Help</a>
-              <a href="#" className="hover:text-black">Privacy Policy</a>
-              <a href="#" className="hover:text-black">Terms of Use</a>
+              <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="hover:text-black">Help</Link>
+              <Link to="/about" onClick={() => setIsMenuOpen(false)} className="hover:text-black">Privacy Policy</Link>
+              <Link to="/about" onClick={() => setIsMenuOpen(false)} className="hover:text-black">Terms of Use</Link>
               <div className="mt-4 flex gap-4">
-                <a href="#" className="hover:text-black">Instagram</a>
-                <a href="#" className="hover:text-black">Facebook</a>
-                <a href="#" className="hover:text-black">Twitter</a>
+                <a href="https://instagram.com/zara" target="_blank" rel="noopener noreferrer" className="hover:text-black">Instagram</a>
+                <a href="https://facebook.com/zara" target="_blank" rel="noopener noreferrer" className="hover:text-black">Facebook</a>
+                <a href="https://twitter.com/zara" target="_blank" rel="noopener noreferrer" className="hover:text-black">Twitter</a>
               </div>
             </div>
           </motion.div>
